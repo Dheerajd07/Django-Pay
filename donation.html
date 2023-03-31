@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Donate</h1>
+<form method="POST">
+    {% csrf_token %}
+    <label for="amount">Donation amount:</label>
+    <input type="text" id="amount" name="amount" required>
+    <br>
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key="{{ stripe_publishable_key }}"
+        data-amount=""
+        data-name="My Site"
+        data-description="Donation"
+        data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+        data-locale="auto">
+    </script>
+</form>
+{% endblock %}
